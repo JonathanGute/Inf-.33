@@ -42,7 +42,7 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
             post_data = self.rfile.read(content_length)
             post_data = json.loads(post_data.decode("utf-8"))
             post_data["id"] = len(estudiantes) + 1
-            estudiantes.append(post_data)
+            estudiantes.append(post_data)hola
             self.send_response(201)
             self.send_header("Content-type", "application/json")
             self.end_headers()
