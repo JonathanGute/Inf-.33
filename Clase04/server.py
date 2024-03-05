@@ -11,7 +11,7 @@ estudiantes = [
 
 
 class RESTRequestHandler(BaseHTTPRequestHandler):
-    def response_handler(self, status, data):
+    def response_handler(self, status):
         self.send_response(status)
         self.send_header("Content-type", "application/json")
         self.end_headers()
