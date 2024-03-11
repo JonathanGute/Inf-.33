@@ -12,14 +12,14 @@ class Estudiante(ObjectType):
 
 class Query(ObjectType):
     estudiantes = List(Estudiante)
-    estudiante = Field(Estudiante, id=Int())
+    estudiante = Field(Estudiante, carrera=String())
 
     def resolve_estudiantes(root, info):
         return estudiantes
 
-    def resolve_estudiante(root, info, id):
+    def resolve_estudiante(root, info, carrera):
         for estudiante in estudiantes:
-            if estudiante.id == id:
+            if estudiante.carrera == carrera:
                 return estudiante
         return None
 
@@ -28,6 +28,8 @@ estudiantes = [
         id=1, nombre="Pedrito", apellido="García", carrera="Ingeniería de Sistemas"
     ),
     Estudiante(id=2, nombre="Jose", apellido="Lopez", carrera="Arquitectura"),
+    Estudiante(id=3, nombre="Ana", apellido="Illanes", carrera="Arquitectura"),
+    Estudiante(id=4, nombre="Luis", apellido="Chavez", carrera="Arquitectura"),
 ]
 
 schema = Schema(query=Query)
